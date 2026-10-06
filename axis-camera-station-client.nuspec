@@ -4,9 +4,9 @@
     <id>axis-camera-station-client</id>
     <version>#{VERSION}#</version>
     <packageSourceUrl>https://github.com/gitwerk/chocolatey-axis-camera-station-package</packageSourceUrl>
-    <owners>bibolorean</owners>
+    <owners>chocowerk</owners>
 
-    <title>AXIS Camera Station Client (Install)</title>
+    <title>AXIS Camera Station Client</title>
     <authors>Axis Communications AB</authors>
     <projectUrl>https://www.axis.com/products/axis-camera-station</projectUrl>
     <iconUrl>https://github.com/gitwerk/chocolatey-axis-camera-station-package/raw/master/icon.png</iconUrl>
