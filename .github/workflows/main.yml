@@ -37,12 +37,12 @@ jobs:
         run: find . -name "*.nuspec" -type f -exec sed -i "s/#{VERSION}#/$TAG/g" {} \;
 
       - name: Choco Pack
-        uses: crazy-max/ghaction-chocolatey@v1.4.0
+        uses: crazy-max/ghaction-chocolatey@v4
         with:
           args: pack --allow-unofficial
           
       - name: Choco Push
         if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
-        uses: crazy-max/ghaction-chocolatey@v1.4.0
+        uses: crazy-max/ghaction-chocolatey@v4
         with:
           args: push axis-camera-station-client.${{ env.TAG }}.nupkg --source "https://push.chocolatey.org/" --api-key "${{ secrets.CHOCO_API_KEY }}" --allow-unofficial
