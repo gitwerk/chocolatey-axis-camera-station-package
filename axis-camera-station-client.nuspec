@@ -9,7 +9,7 @@
     <title>AXIS Camera Station Client</title>
     <authors>Axis Communications AB</authors>
     <projectUrl>https://www.axis.com/products/axis-camera-station</projectUrl>
-    <iconUrl>https://github.com/gitwerk/chocolatey-axis-camera-station-package/raw/master/icon.png</iconUrl>
+    <iconUrl>https://cdn.jsdelivr.net/gh/gitwerk/chocolatey-axis-camera-station-package@cc22505955ba966f28ba98481bb3b700ce931b64/icon.png</iconUrl>
     <copyright>Axis Communications AB</copyright>
     <docsUrl>https://help.axis.com/axis-camera-station-5</docsUrl>
     <releaseNotes>https://www.axis.com/ftp/pub_soft/cam_srv/cam_station/latest/relnote.txt</releaseNotes>
