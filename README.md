@@ -30,21 +30,24 @@ choco feature enable -n useRememberedArgumentsForUpgrades
 These parameters map to the MSI properties documented by Axis in [Installation parameters – AXIS Camera Station Microsoft installer](https://www.axis.com/dam/public/76/4b/d4/installation-parameters-microsoft-installer-en-GB+en-US-416222.pdf).
 
 ## Updating the package
+Every Monday the `Check for New Version` workflow (`update.yml`) compares the packaged version with Axis's latest version. When Axis has a newer one, it downloads the MSI, updates `$version` and `$checksum` in `tools/chocolateyinstall.ps1`, and opens a pull request. Merging the pull request starts `Tag Release` (`release.yml`), which tags the version and runs the publish workflow. You can also run `Check for New Version` by hand.
+
+The repository setting *Settings → Actions → General → Allow GitHub Actions to create and approve pull requests* must be enabled.
+
+To update by hand:
 1. Look up the new version in https://www.axis.com/ftp/pub_soft/cam_srv/cam_station/latest/ver.txt (e.g. `5.59.56000`). Axis publishes each release in a versioned folder such as `.../cam_station/5_59_56000/AXISCameraStationClient_5.59.56000.msi`.
 2. Download the client MSI and compute its checksum:
    ```powershell
    Get-FileHash .\AXISCameraStationClient_5.59.56000.msi -Algorithm SHA256
    ```
 3. Update `$version` and `$checksum` in `tools/chocolateyinstall.ps1`.
-4. Commit, then tag the commit with the same version and push it with the tag:
+4. Commit and push to `master`:
    ```bash
    git commit -am "Update to 5.59.56000"
-   git tag 5.59.56000
    git push
-   git push origin 5.59.56000
    ```
 
-GitHub Actions builds the package and publishes it to Chocolatey when the tag is pushed. You can also run the workflow by hand (`workflow_dispatch`) with a tag.
+`Tag Release` then tags the version and publishes the package to Chocolatey. You can also run the publish workflow by hand (`workflow_dispatch`) with an existing tag.
 
 ## Contributing
 Issues and pull requests are welcome.
